@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/add_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div class="form-container">
+        <h2>Добавить взлетную полосу</h2>
+        <form  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Категория полосы</label>
+                <input type="text" name="category_strips" placeholder="Введите категорию полосы" required>
+            </div>
+            <div class="form-group">
+                <label>Длина</label>
+                <input type="text" name="length" placeholder="Введите длину" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Статус</label>
+                <input type="text" name="status" placeholder="Введите год производства" required>
+            </div>
+            <div class="form-group">
+                <button name="save_takeoff_lane">Записать</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

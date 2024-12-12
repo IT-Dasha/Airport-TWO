@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/all_data.css' %}">
+</head>
+<body>
+  <style>
+    .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 169%;
+    max-width: 1646px;
+    margin-bottom: 20px;
+    position: relative;
+    left: 82px;
+    }
+
+    .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 249%;
+    max-width: 1653px;
+    padding: 4px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+    left: 82px;
+}
+
+  </style>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div>
+     <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Номер рейса</th>
+                    <th>Дата и время вылета</th>
+                    <th>Направление</th>
+                    <th>Самолет</th>
+                    <th>Экипаж</th>
+                    <th>Полоса</th>
+                    <th>Действие
+                      <a href="{% url 'add_race' %}">
+                        <button type="submit">Добавить</button>
+                      </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for race in all_race %}
+              <form method="post"  style="display:inline;" enctype="multipart/form-data">
+                {% csrf_token %}
+                <tr>
+                    <td> 
+                      <input type="hidden" name="id_race" value="{{ race.id_race}}"> 
+                      <input type="text" name="number_race" value="{{ race.number_race }}">
+                    </td>
+                    <td><input type="date" name="date_and_time_of_departure" value="{{ race.date_and_time_of_departure }}"></td>
+                    <td><input type="text" name="direction" value="{{ race.direction }}"></td>
+                    <td>
+                      <label> {{ race.id_plane.number_registration}} </label>
+                      <select class="form-group"name="id_plane">
+                      {% for plane in all_plane %}
+                          <option name="id_plane" value="{{plane.id_plane}}">{{plane.number_registration}}</option>
+                      {% endfor %}
+                      </select>
+                    </td>
+                    
+                    <td>
+                      <label> {{ race.id_equipage.commander_equipage}} </label>
+                      <select class="form-group"name="id_equipage">
+                      {% for equipage in all_equipage %}
+                      <option name="id_equipage" value="{{equipage.id_equipage}}" >{{equipage.commander_equipage}}</option>
+                      {% endfor %}
+                      </select>
+                    </td>
+
+                    <td>
+                      <label> {{ race.id_takeoff_lane.category_strips}} </label>
+                      <select class="form-group"name="id_takeoff_lane">
+                      {% for takeoff_lane in all_takeofflane %}
+                      <option name="id_takeoff_lane" value="{{takeoff_lane.id_takeoff_lane}}" >{{takeoff_lane.category_strips}}</option>
+                      {% endfor %}
+                      </select>
+                    </td>
+                    <td>
+                            <button name="update_race" class="form-group button">Изменить</button>
+                            <button name="delete_race" class="form-group button" onclick="return confirm('Вы уверены, что хотите удалить этого сотрудника?');">Удалить</button>
+                    </td>
+                </tr>        
+            </tbody>
+          </form>
+            {% endfor %}     
+        </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+      <div class="card">
+          <i class="fas fa-plane"></i>
+          <a href="{% url 'all_plane' %}">
+            <img src="{% static 'img/plane.png' %}">
+          </a>
+          <span>Самолеты</span>
+      </div>
+    <div class="card">
+        <i class="fas fa-car"></i>
+        <a href="{% url 'all_race' %}">
+        <img src="{% static 'img/race.png' %}">
+        </a>
+        <span>Рейс</span>
+    </div>
+    <div class="card"><i class="fas fa-bicycle"></i>
+      <a href="{% url 'all_takeofflane' %}">
+      <img src="{% static 'img/takeoff_lane.webp' %}">
+      </a>
+      <span>Взлетная полоса</span>
+    </div>
+    <div class="card"><i class="fas fa-bus"></i>
+      <a href="{% url 'all_flight_history' %}">
+      <img src="{% static 'img/store_fly.webp' %}">
+    </a>
+      <span>История полетов</span>
+    </div>
+    <div class="card"><i class="fas fa-train"></i>
+      <a href="{% url 'all_equipage' %}">
+      <img src="{% static 'img/employee.png' %}">
+    </a>
+      <span>Экипаж</span>
+    </div>
+    <div class="card"><i class="fas fa-ship"></i>
+      <a href="{% url 'home_employee' %}">
+      <img src="{% static 'img/personal.png' %}">
+    </a>
+      <span>Персонал</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

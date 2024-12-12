@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/add_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div class="form-container">
+        <h2>Добавить самолет</h2>
+        <form  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Номер регистрации</label>
+                <input type="text" name="number_registration" placeholder="Введите номер регистрации" required>
+            </div>
+            <div class="form-group">
+                <label>Тип самолета</label>
+                <input type="text" name="type_plane" placeholder="Введите тип самолета" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Год производства</label>
+                <input type="text" name="year_production" placeholder="Введите год производства" required>
+            </div>
+            <div class="form-group">
+                <button name="save_plane">Записать</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

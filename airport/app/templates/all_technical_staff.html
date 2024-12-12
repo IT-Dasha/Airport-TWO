@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/all_data.css' %}">
+</head>
+<body>
+  <style>
+    .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1390px;
+    margin-bottom: 20px;
+    }
+
+    .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1390px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+  </style>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div>
+     <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Образование</th>
+                    <th>Стаж</th>
+                    <th>Сотрудник</th>
+                    <th>Смена</th>
+                    <th>Действия
+                      <a href="{% url 'add_technical_staff' %}">
+                        <button type="submit">Добавить</button>
+                      </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for technical_staff in all_technical_staff %}
+              <form method="post"  style="display:inline;" enctype="multipart/form-data">
+                {% csrf_token %}
+                <tr>
+                    <td> 
+                      <input type="hidden" name="id_technical_staff" value="{{ technical_staff.id_technical_staff}}"> 
+                      <input type="text" name="education" value="{{ technical_staff.education }}">
+                    </td>
+                    <td><input type="text" name="experience" value="{{ technical_staff.experience }}"></td>
+                    <td>
+                      <label> {{ technical_staff.id_employee.full_name}} </label>
+                      <select class="form-group"name="id_employee">
+                      {% for employee in all_employee %}
+                      <option name="id_employee" value="{{employee.id_employee}}" >{{employee.full_name}}</option>
+                      {% endfor %}
+                      </select>
+                    </td>
+                    <td>
+                      <label>{{ technical_staff.id_shift.time_start}} {{ technical_staff.id_shift.time_end}}</label>
+                      <select class="form-group" name="id_shift" >
+                        {% for shift in all_shift %}
+                        <option name="id_shift" value="{{shift.id_shift}}" >{{ technical_staff.id_shift.time_start}} {{ technical_staff.id_shift.time_end}}</option>
+                        {% endfor %}
+                      </select>
+                    </td>
+                    <td>
+                            <button name="update_technical_staff" class="form-group button">Изменить</button>
+                            <button name="delete_technical_staff" class="form-group button" onclick="return confirm('Вы уверены, что хотите удалить этого сотрудника?');">Удалить</button>
+                          </td>
+
+                    
+                </tr>        
+            </tbody>
+          </form>
+            {% endfor %}     
+        </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

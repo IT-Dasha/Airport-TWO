@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/add_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div class="form-container">
+        <h2>Добавить рейс</h2>
+        <form  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Номер рейса</label>
+                <input type="text" name="number_race" placeholder="Введите номер рейса" required>
+            </div>
+            <div class="form-group">
+                <label>Дата и время вылета</label>
+                <input type="text" name="date_and_time_of_departure" placeholder="Введите дату и время вылета" required>
+            </div>
+            <div class="form-group">
+                <label>Направление</label>
+                <input type="text" name="direction" placeholder="Введите направление" required>
+            </div>
+            <div class="form-group">
+                <label>Cамолет</label>
+                <select class="form-group" name="id_plane_id">
+                    {% for plane in plane_all %}
+                    <option name="id_plane_id" value="{{plane.id_plane}}" >{{plane.type_plane}}</option>
+                    {% endfor %}
+                </select>
+                <label>Экипаж</label>
+                <select class="form-group" name="id_equipage_id">
+                    {% for equipage in equipage_all %}
+                    <option name="id_equipage_id" value="{{equipage.id_equipage}}" >{{equipage.commander_equipage}}</option>
+                    {% endfor %}
+                </select>
+                <label>Полоса</label>
+                <select class="form-group" name="id_takeoff_lane_id">
+                    {% for takeoff_lane in takeofflane_all %}
+                    <option name="id_takeoff_lane_id" value="{{takeoff_lane.id_takeoff_lane}}" >{{takeoff_lane.category_strips}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <button name="save_race">Записать</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

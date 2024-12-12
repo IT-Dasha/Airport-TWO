@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/add_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div class="form-container">
+        <h2>Добавить экипаж</h2>
+        <form  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Дата формирования</label>
+                <input type="text" name="data_formation" placeholder="Введите дату формирования" required>
+            </div>
+            <div class="form-group">
+                <label>Командир экипажа</label>
+                <input type="text" name="commander_equipage" placeholder="Введите ФИО командира" required>
+            </div>
+            <div class="form-group">
+                <button name="save_equipage">Записать</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

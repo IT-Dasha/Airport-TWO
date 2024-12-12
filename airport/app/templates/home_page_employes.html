@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+      <div class="card">
+          <i class="fas fa-plane"></i>
+          <a href="{% url 'all_employee' %}">
+            <img src="{% static 'img/employee.png' %}">
+          </a>
+          <span>Сотрудники</span>
+      </div>
+    <div class="card">
+        <i class="fas fa-car"></i>
+        <a href="{% url 'all_technical_staff' %}">
+        <img src="{% static 'img/tech_personal.png' %}">
+      </a>
+        <span>Технический персонал</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

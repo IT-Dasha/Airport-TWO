@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/all_data.css' %}">
+</head>
+<body>
+  <style>
+    .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 772px;
+    margin-bottom: 20px;
+    }
+
+    .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 772px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+  </style>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div>
+     <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Категория полосы</th>
+                    <th>Длина</th>
+                    <th>Статус</th>
+                    <th>Действия
+                      <a href="{% url 'add_takeoff_lane' %}">
+                        <button type="submit">Добавить</button>
+                      </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for takeofflane in all_takeofflane %}
+              <form method="post"  style="display:inline;" enctype="multipart/form-data">
+                {% csrf_token %}
+                <tr>
+                    <td> 
+                      <input type="hidden" name="id_takeoff_lane  " value="{{ takeofflane.id_takeoff_lane}}"> 
+                      <input type="text" name="category_strips" value="{{ takeofflane.category_strips }}">
+                    </td>
+                    <td><input type="text" name="length" value="{{ takeofflane.length }}"></td>
+                    <td><input type="text" name="status" value="{{ takeofflane.status }}"></td>
+                    <td>
+                            <button name="update_takeofflane" class="form-group button">Изменить</button>
+                            <button name="delete_takeofflane" class="form-group button" onclick="return confirm('Вы уверены, что хотите удалить эту смена?');">Удалить</button>
+                          </td>
+                </tr>        
+            </tbody>
+          </form>
+            {% endfor %}     
+        </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>

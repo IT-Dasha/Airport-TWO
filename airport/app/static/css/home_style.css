@@ -1,0 +1,81 @@
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    margin: 0;
+  }
+  
+  .header .search-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .header .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  .card {
+    width: calc(33.33% - 20px); /* 3 карточки в ряд с учетом отступов */
+    height: 150px;
+    margin: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.3s, border-style 0.3s;
+  }
+  
+  .card i {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  
+  .card span {
+    font-weight: bold;
+  }
+  
+  .card:hover {
+    background-color: #ffffffe0; /* Цвет при наведении */
+    border-color: black;
+  }
+  img {
+    max-width: 45%;
+    height: auto;
+  }
