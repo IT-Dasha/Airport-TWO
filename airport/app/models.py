@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Employee(models.Model):
-    id_employee = models.IntegerField(primary_key=True)
+    id_employee = models.AutoField(primary_key=True)
     full_name = models.TextField(db_column='full name')  # Field renamed to remove unsuitable characters.
     post = models.TextField()
     contact_information = models.TextField()
@@ -22,7 +22,7 @@ class Employee(models.Model):
 
 
 class Equipage(models.Model):
-    id_equipage = models.IntegerField(primary_key=True)
+    id_equipage = models.AutoField(primary_key=True)
     data_formation = models.DateTimeField(blank=True, null=True)
     commander_equipage = models.TextField(blank=True, null=True)
 
@@ -32,7 +32,7 @@ class Equipage(models.Model):
 
 
 class FlightHistory(models.Model):
-    id_flight_history = models.IntegerField(primary_key=True)
+    id_flight_history = models.AutoField(primary_key=True)
     id_employee = models.ForeignKey(Employee, models.DO_NOTHING, db_column='id_employee')
     id_technical_staff = models.ForeignKey('TechnicalStaff', models.DO_NOTHING, db_column='id_technical_staff')
     id_shift = models.ForeignKey('Shift', models.DO_NOTHING, db_column='id_shift')
@@ -44,7 +44,7 @@ class FlightHistory(models.Model):
 
 
 class Plane(models.Model):
-    id_plane = models.IntegerField(primary_key=True)
+    id_plane = models.AutoField(primary_key=True)
     number_registration = models.TextField()
     type_plane = models.TextField()
     year_production = models.TextField()
@@ -55,7 +55,7 @@ class Plane(models.Model):
 
 
 class Race(models.Model):
-    id_race = models.IntegerField(primary_key=True)
+    id_race = models.AutoField(primary_key=True)
     number_race = models.TextField()
     date_and_time_of_departure = models.DateTimeField()
     direction = models.TextField()
@@ -69,7 +69,7 @@ class Race(models.Model):
 
 
 class Shift(models.Model):
-    id_shift = models.IntegerField(primary_key=True)
+    id_shift = models.AutoField(primary_key=True)
     time_start = models.TimeField()
     time_end = models.TimeField()
 
@@ -79,7 +79,7 @@ class Shift(models.Model):
 
 
 class TakeoffLane(models.Model):
-    id_takeoff_lane = models.IntegerField(primary_key=True)
+    id_takeoff_lane = models.AutoField(primary_key=True)
     category_strips = models.TextField()
     length = models.IntegerField()
     status = models.TextField()
@@ -90,7 +90,7 @@ class TakeoffLane(models.Model):
 
 
 class TechnicalStaff(models.Model):
-    id_technical_staff = models.IntegerField(primary_key=True)
+    id_technical_staff = models.AutoField(primary_key=True)
     education = models.TextField()
     experience = models.IntegerField()
     id_shift = models.ForeignKey(Shift, models.DO_NOTHING, db_column='id_shift')
