@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/add_style.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <div class="content">
+    <div class="form-container">
+        <h2>Запрос в бд</h2>
+        <form  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="post" placeholder="Введите запрос в базу данных" required>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

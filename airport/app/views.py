@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse
 # Create your views here.
 from django.http import HttpResponse
+from django.db import connection
 from .models import *
 def home(request):
     return render(request, "home_page.html")
@@ -326,3 +327,10 @@ def all_flight_history(request):
 
 def home_employee(request):
     return render(request, "home_page_employes.html")
+
+# from django.db import connection
+ 
+# with connection.cursor() as cursor:
+#         cursor.execute("SELECT * FROM hello_person WHERE name = 'Tomas'")
+#         row = cursor.fetchone()     # получаем одну строку
+#         print(row)
