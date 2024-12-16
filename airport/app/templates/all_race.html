@@ -67,7 +67,7 @@
                       <input type="hidden" name="id_race" value="{{ race.id_race}}"> 
                       <input type="text" name="number_race" value="{{ race.number_race }}">
                     </td>
-                    <td><input type="date" name="date_and_time_of_departure" value="{{ race.date_and_time_of_departure }}"></td>
+                    <td><input type="date" name="date_and_time_of_departure" value="{{ race.date_and_time_of_departure|date:'Y-m-d' }}"></td>
                     <td><input type="text" name="direction" value="{{ race.direction }}"></td>
                     <td>
                       <label> {{ race.id_plane.number_registration}} </label>
