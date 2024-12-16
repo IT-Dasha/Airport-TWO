@@ -77,10 +77,10 @@
                     </td>
 
                     <td>
-                      <label> {{ flight_history.id_shift.time_start}} {{ flight_history.id_shift.time_end}} </label>
+                      <label> {{ flight_history.id_shift.time_start|time:"H:i"}} {{ flight_history.id_shift.time_end|time:"H:i"}} </label>
                       <select class="form-group"name="id_shift">
                       {% for shift in all_shift %}
-                      <option name="id_shift" value="{{shift.id_shift}}" >{{shift.time_start}} {{shift.time_end}}</option>
+                      <option name="id_shift" value="{{shift.id_shift}}" >{{shift.time_start|time:"H:i"}} {{shift.time_end|time:"H:i"}}</option>
                       {% endfor %}
                       </select>
                     </td>
