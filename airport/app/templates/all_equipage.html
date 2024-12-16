@@ -56,7 +56,7 @@
                 <tr>
                     <td> 
                       <input type="hidden" name="id_equipage" value="{{ equipage.id_equipage}}"> 
-                      <input type="text" name="data_formation" value="{{ equipage.data_formation }}">
+                      <input type="text" name="data_formation" value="{{ equipage.data_formation|date:"D M Y" }} {{ equipage.data_formation|time:"H" }}">
                     </td>
                     <td><input type="text" name="commander_equipage" value="{{ equipage.commander_equipage }}"></td>
                     <td>
