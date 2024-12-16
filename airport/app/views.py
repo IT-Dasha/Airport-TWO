@@ -328,9 +328,17 @@ def all_flight_history(request):
 def home_employee(request):
     return render(request, "home_page_employes.html")
 
-# from django.db import connection
- 
-# with connection.cursor() as cursor:
-#         cursor.execute("SELECT * FROM hello_person WHERE name = 'Tomas'")
-#         row = cursor.fetchone()     # получаем одну строку
-#         print(row)
+
+from django.db import connection, DatabaseError
+
+def post(request):
+        if 'but' in request.POST:
+            post = request.POST.get("post")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows':rows}
+            return render(request, "post.html",context=context)
+        else:
+            return render(request, "post.html")

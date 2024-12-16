@@ -14,11 +14,16 @@
   <div class="content">
     <div class="form-container">
         <h2>Запрос в бд</h2>
-        <form  method="post" enctype="multipart/form-data" >
+        <form method="POST" action="" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 <input type="text" name="post" placeholder="Введите запрос в базу данных" required>
             </div>
+            <button name="but">Отправить запрос</button>
+            <div></div>
+            {% for row in rows %}
+            <label>{{row}}</label>
+            {% endfor %}
         </form>
     </div>
 </div>
