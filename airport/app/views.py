@@ -114,13 +114,13 @@ def all_plane(request):
         return render(request, "all_plane.html", context=context)
     if 'update_plane' in request.POST:
         all_plane=Plane.objects.all()
-        id=request.POST.get("id_plane")
         plane=Plane()
-        plane.id_plane=id
+        plane.id_plane=request.POST.get("id_plane")
         plane.number_registration=request.POST.get("number_registration")
         plane.type_plane=request.POST.get("type_plane")
         plane.year_production=request.POST.get("year_production")
         plane.save(force_update=True)
+        print(plane.id_plane)
         context={'all_plane':all_plane}
         return render(request, "all_plane.html", context=context)
     context={'all_plane':all_plane}

@@ -27,22 +27,25 @@
                 </tr>
             </thead>
             <tbody>
-                <form method="post"  style="display:inline;" enctype="multipart/form-data">
-                  {% for plane in all_plane %}
+              {% for plane in all_plane %}
+              <form method="post"  style="display:inline;" enctype="multipart/form-data">
                   {% csrf_token %}
+
+
                 <tr>
-                  <input type="hidden" name="id_plane" value="{{ plane.id_plane }}">
-                    <td><input type="text" name="number_registration" value="{{ plane.number_registration }}"></td>
+                    <td>
+                      <input type="hidden" name="id_plane" value="{{ plane.id_plane }}">
+                      <input type="text" name="number_registration" value="{{ plane.number_registration }}"></td>
                     <td><input type="text" name="type_plane" value="{{ plane.type_plane }}"></td>
                     <td><input type="text" name="year_production" value="{{ plane.year_production }}"></td>
                     <td>
-                            <button name="update_plane" class="form-group button">Изменить</button>
+                            <button type="submit" name="update_plane" class="form-group button">Изменить</button>
                         
                             <button type="submit" name="delete_plane" class="form-group button" onclick="return confirm('Вы уверены, что хотите удалить этот самолет?');">Удалить</button>
                     </td>
                 </tr>
-                {% endfor %}
               </form>
+              {% endfor %}
             </tbody>
         </table>
     </div>
