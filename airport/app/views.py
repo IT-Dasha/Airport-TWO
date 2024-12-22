@@ -345,30 +345,7 @@ def post(request):
         
 
 def postes(request):
-        if 'but_0_1' in request.POST:
-            post = request.POST.get("post_0_1")
-            with connection.cursor() as cursor:
-                cursor.execute(post)
-                rows = cursor.fetchall()  # Получаем все строки
-                print(rows)
-                context = {'rows_0_1':rows}
-            return render(request, "postes.html",context=context) 
-        if 'but_0_2' in request.POST:
-            post = request.POST.get("post_0_2")
-            with connection.cursor() as cursor:
-                cursor.execute(post)
-                rows = cursor.fetchall()  # Получаем все строки
-                print(rows)
-                context = {'rows_0_2':rows}
-            return render(request, "postes.html",context=context)        
-        if 'but_0_3' in request.POST:
-            post = request.POST.get("post_0_3")
-            with connection.cursor() as cursor:
-                cursor.execute(post)
-                rows = cursor.fetchall()  # Получаем все строки
-                print(rows)
-                context = {'rows_0_3':rows}
-            return render(request, "postes.html",context=context)
+        
         if 'but_1' in request.POST:
             post = request.POST.get("post_1")
             with connection.cursor() as cursor:
