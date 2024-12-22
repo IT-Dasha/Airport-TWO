@@ -337,8 +337,9 @@ def post(request):
             with connection.cursor() as cursor:
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
-                print(rows)
-                context = {'rows':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                print(columns)
+                context = {'rows':rows, 'columns':columns}
             return render(request, "post.html",context=context)
         else:
             return render(request, "post.html")
@@ -352,7 +353,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_1':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_1':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         if 'but_2' in request.POST:
             post = request.POST.get("post_2")
@@ -360,7 +362,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_2':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_2':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         if 'but_3' in request.POST:
             post = request.POST.get("post_3")
@@ -368,7 +371,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_3':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_3':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         if 'but_4' in request.POST:
             post = request.POST.get("post_4")
@@ -376,7 +380,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_4':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_4':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         if 'but_5' in request.POST:
             post = request.POST.get("post_5")
@@ -384,7 +389,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_5':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_5':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         if 'but_6' in request.POST:
             post = request.POST.get("post_6")
@@ -392,7 +398,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_6':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_6':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         if 'but_7' in request.POST:
             post = request.POST.get("post_7")
@@ -400,7 +407,8 @@ def postes(request):
                 cursor.execute(post)
                 rows = cursor.fetchall()  # Получаем все строки
                 print(rows)
-                context = {'rows_7':rows}
+                columns = [desc[0] for desc in cursor.description]  # Получаем названия столбцов
+                context = {'rows_7':rows, 'columns':columns}
             return render(request, "postes.html",context=context)
         else:
             return render(request, "postes.html")

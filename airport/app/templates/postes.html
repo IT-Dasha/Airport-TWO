@@ -18,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 800px;
+    max-width: 1028px;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -54,9 +54,20 @@
                         <button name="but_1">Отправить запрос</button>
                   </td>
                   <td style="width: 234px;">
-                    {% for r_1 in rows_1 %}
-                    <label>{{r_1}}</label>
-                    {% endfor %}
+                    <table border="1">
+                      <tr>
+                          {% for column in columns %}
+                              <th>{{ column }}</th>
+                          {% endfor %}
+                      </tr>
+                      {% for row in rows_1 %}
+                          <tr>
+                              {% for value in row %}
+                                  <td>{{ value }}</td>
+                              {% endfor %}
+                          </tr>
+                      {% endfor %}
+                  </table>
                   </td>
                   
               </tr>
@@ -80,9 +91,20 @@
                       <button name="but_2">Отправить запрос</button>
                 </td>
                 <td style="width: 234px;">
-                  {% for row in rows_2 %}
-                  <label>{{row}}</label>
-                  {% endfor %}
+                  <table border="1">
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows_2 %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
                 </td>
                 
             </tr>
@@ -109,9 +131,20 @@
                       <button name="but_3">Отправить запрос</button>
                 </td>
                 <td style="width: 234px;">
-                  {% for row in rows_3  %}
-                  <label>{{row}}</label>
-                  {% endfor %}
+                  <table border="1">
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows_3 %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
                 </td>
                 
             </tr>
@@ -139,9 +172,20 @@
                       <button name="but_4">Отправить запрос</button>
                 </td>
                 <td style="width: 234px;">
-                  {% for row in rows_4  %}
-                  <label>{{row}}</label>
-                  {% endfor %}
+                  <table border="1">
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows_4 %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
                 </td>
                 
             </tr>
@@ -172,9 +216,20 @@ WHERE
                       <button name="but_5">Отправить запрос</button>
                 </td>
                 <td style="width: 234px;">
-                  {% for row in rows_5 %}
-                  <label>{{row}}</label>
-                  {% endfor %}
+                  <table border="1">
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows_5 %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
                 </td>
                 
             </tr>
@@ -205,9 +260,20 @@ WHERE
                       <button name="but_6">Отправить запрос</button>
                 </td>
                 <td style="width: 234px;">
-                  {% for row in rows_6 %}
-                  <label>{{row}}</label>
-                  {% endfor %}
+                  <table border="1">
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows_6 %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
                 </td>
                 
             </tr>
@@ -239,10 +305,20 @@ WHERE
                       <button name="but_7">Отправить запрос</button>
                 </td>
                 <td style="width: 234px;">
-                  {% for row in rows_7 %}
-                  <label>{{row}}</label>
-                  {% endfor %}
-                </td>
+                  <table border="1">
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows_7 %}
+                        <tr>
+                            {% for value in row %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
                 
             </tr>
               </tbody>

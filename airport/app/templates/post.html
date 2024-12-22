@@ -21,9 +21,20 @@
             </div>
             <button name="but">Отправить запрос</button>
             <div></div>
-            {% for row in rows %}
-            <label>{{row}}</label>
-            {% endfor %}
+            <table border="1">
+                <tr>
+                    {% for column in columns %}
+                        <th>{{ column }}</th>
+                    {% endfor %}
+                </tr>
+                {% for row in rows %}
+                    <tr>
+                        {% for value in row %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
         </form>
     </div>
     <a  href="{% url 'home' %}"> <button >В меню </button></a>
