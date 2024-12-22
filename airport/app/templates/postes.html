@@ -42,64 +42,6 @@
            <tbody>
             <form method="post"  style="display:inline;" enctype="multipart/form-data">
                 {% csrf_token %}
-                <tr>
-                  <td>
-                    <label>Удаление</label>
-                    <textarea style="width: 624px; height: 124px;" type="text" name="post_0_1" value="">
-                      DELETE FROM public."Race"
-                      WHERE id_race = 2;                                                
-                      </textarea>
-                        <button name="but_0_1">Отправить запрос</button>
-                  </td>
-                  <td style="width: 234px;">
-                    {% for r_1 in rows_0_1   %}
-                    <label>{{r_1}}</label>
-                    {% endfor %}
-                  </td>
-                  
-              </tr>
-
-                <tr>
-                  <td>
-                    <label>Корректировка</label>
-                    <textarea style="width: 624px; height: 124px;" type="text" name="post_0_2" value="">
-                      UPDATE public."Employee"
-                      SET 
-                          post = 'старший пилот', 
-                          contact_information = 'new_email@example.com' 
-                      WHERE 
-                          id_employee = 11;                        
-                      </textarea>
-                        <button name="but_0_2">Отправить запрос</button>
-                  </td>
-                  <td style="width: 234px;">
-                    {% for r_1 in rows_0_2   %}
-                    <label>{{r_1}}</label>
-                    {% endfor %}
-                  </td>
-                  
-              </tr>
-                <tr>
-                  <td>
-                    <label>Поиск</label>
-                    <textarea style="width: 624px; height: 124px;" type="text" name="post_0_3" value="">
-                      SELECT * FROM public."Employee"
-WHERE post = 'пилот'
-ORDER BY full name;
-
-                      
-                      </textarea>
-                        <button name="but_0_3">Отправить запрос</button>
-                  </td>
-                  <td style="width: 234px;">
-                    {% for r_1 in rows_1 %}
-                    <label>{{r_1}}</label>
-                    {% endfor %}
-                  </td>
-                  
-              </tr>
-
-
               <tr>
                   <td>
                     <label></label>
