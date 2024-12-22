@@ -342,3 +342,89 @@ def post(request):
             return render(request, "post.html",context=context)
         else:
             return render(request, "post.html")
+        
+
+def postes(request):
+        if 'but_0_1' in request.POST:
+            post = request.POST.get("post_0_1")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_0_1':rows}
+            return render(request, "postes.html",context=context) 
+        if 'but_0_2' in request.POST:
+            post = request.POST.get("post_0_2")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_0_2':rows}
+            return render(request, "postes.html",context=context)        
+        if 'but_0_3' in request.POST:
+            post = request.POST.get("post_0_3")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_0_3':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_1' in request.POST:
+            post = request.POST.get("post_1")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_1':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_2' in request.POST:
+            post = request.POST.get("post_2")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_2':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_3' in request.POST:
+            post = request.POST.get("post_3")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_3':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_4' in request.POST:
+            post = request.POST.get("post_4")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_4':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_5' in request.POST:
+            post = request.POST.get("post_5")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_5':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_6' in request.POST:
+            post = request.POST.get("post_6")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_6':rows}
+            return render(request, "postes.html",context=context)
+        if 'but_7' in request.POST:
+            post = request.POST.get("post_7")
+            with connection.cursor() as cursor:
+                cursor.execute(post)
+                rows = cursor.fetchall()  # Получаем все строки
+                print(rows)
+                context = {'rows_7':rows}
+            return render(request, "postes.html",context=context)
+        else:
+            return render(request, "postes.html")
+

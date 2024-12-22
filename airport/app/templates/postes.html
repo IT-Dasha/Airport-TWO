@@ -1,0 +1,312 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sky Way</title>
+    <link rel="stylesheet" href="{% static 'css/all_data.css' %}">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Sky Way</h1>
+    <span>ISTRA AIR</span>
+  </div>
+  <style>
+    .content {
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+    top: 661px;
+}
+
+  </style>
+  <div class="content">
+    <div class="form-container">
+        <h2>Запрос в бд</h2>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table style="width: 100%; border-collapse: collapse;">
+           <thead>
+            <tr>
+                <th>Запрос</th>
+                <th>Ответ</th>
+            </tr>
+           </thead>
+           <tbody>
+            <form method="post"  style="display:inline;" enctype="multipart/form-data">
+                {% csrf_token %}
+                <tr>
+                  <td>
+                    <label>Удаление</label>
+                    <textarea style="width: 624px; height: 124px;" type="text" name="post_0_1" value="">
+                      DELETE FROM public."Race"
+                      WHERE id_race = 2;                                                
+                      </textarea>
+                        <button name="but_0_1">Отправить запрос</button>
+                  </td>
+                  <td style="width: 234px;">
+                    {% for r_1 in rows_0_1   %}
+                    <label>{{r_1}}</label>
+                    {% endfor %}
+                  </td>
+                  
+              </tr>
+
+                <tr>
+                  <td>
+                    <label>Корректировка</label>
+                    <textarea style="width: 624px; height: 124px;" type="text" name="post_0_2" value="">
+                      UPDATE public."Employee"
+                      SET 
+                          post = 'старший пилот', 
+                          contact_information = 'new_email@example.com' 
+                      WHERE 
+                          id_employee = 11;                        
+                      </textarea>
+                        <button name="but_0_2">Отправить запрос</button>
+                  </td>
+                  <td style="width: 234px;">
+                    {% for r_1 in rows_0_2   %}
+                    <label>{{r_1}}</label>
+                    {% endfor %}
+                  </td>
+                  
+              </tr>
+                <tr>
+                  <td>
+                    <label>Поиск</label>
+                    <textarea style="width: 624px; height: 124px;" type="text" name="post_0_3" value="">
+                      SELECT * FROM public."Employee"
+WHERE post = 'пилот'
+ORDER BY full name;
+
+                      
+                      </textarea>
+                        <button name="but_0_3">Отправить запрос</button>
+                  </td>
+                  <td style="width: 234px;">
+                    {% for r_1 in rows_1 %}
+                    <label>{{r_1}}</label>
+                    {% endfor %}
+                  </td>
+                  
+              </tr>
+
+
+              <tr>
+                  <td>
+                    <label></label>
+                    <textarea style="width: 624px; height: 124px;" type="text" name="post_1" value="">SELECT p.type_plane, COUNT(r.id_race) AS total_flights, MAX(r.date_and_time_of_departure) AS latest_departure FROM public."Plane" p LEFT JOIN 
+                        public."Race" r ON p.id_plane = r.id_plane
+                    GROUP BY 
+                        p.type_plane
+                    ORDER BY 
+                        p.type_plane;</textarea>
+                        <button name="but_1">Отправить запрос</button>
+                  </td>
+                  <td style="width: 234px;">
+                    {% for r_1 in rows_1 %}
+                    <label>{{r_1}}</label>
+                    {% endfor %}
+                  </td>
+                  
+              </tr>
+
+              <tr>
+                <td>
+                    <label> Количество сотрудников в каждом экипаже
+                    </label>
+                  <textarea style="width: 624px; height: 124px;" type="text" name="post_2" value="">SELECT 
+                    e.id_equipage,
+                    COUNT(emp.id_employee) AS employee_count
+                FROM 
+                    public."Equipage" e
+                LEFT JOIN 
+                    public."Employee" emp ON e.id_equipage = emp.id_equipage
+                GROUP BY 
+                    e.id_equipage
+                ORDER BY 
+                    e.id_equipage;               
+                    </textarea>
+                      <button name="but_2">Отправить запрос</button>
+                </td>
+                <td style="width: 234px;">
+                  {% for row in rows_2 %}
+                  <label>{{row}}</label>
+                  {% endfor %}
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td>
+                    <label> Максимальная длина взлетной полосы для каждого типа самолета
+                    </label>
+                  <textarea style="width: 624px; height: 124px;" type="text" name="post_3" value="">
+                    SELECT 
+                    p.type_plane,
+                    MAX(t.length) AS max_length
+                FROM 
+                    public."Plane" p
+                JOIN 
+                    public."Race" r ON p.id_plane = r.id_plane
+                JOIN 
+                    public."Takeoff_lane" t ON r.id_takeoff_lane = t.id_takeoff_lane
+                GROUP BY 
+                    p.type_plane
+                ORDER BY 
+                    p.type_plane;                        
+                    </textarea>
+                      <button name="but_3">Отправить запрос</button>
+                </td>
+                <td style="width: 234px;">
+                  {% for row in rows_3  %}
+                  <label>{{row}}</label>
+                  {% endfor %}
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td>
+                    <label> Найти информацию о рейсах и самолетах, которые их выполняют
+
+                    </label>
+                  <textarea style="width: 624px; height: 124px;" type="text" name="post_4" value="">
+                    SELECT 
+                    r.id_race,
+                    r.number_race,
+                    r.date_and_time_of_departure,
+                    p.number_registration,
+                    p.type_plane
+                FROM 
+                    public."Race" r
+                JOIN 
+                    public."Plane" p ON r.id_plane = p.id_plane
+                ORDER BY 
+                    r.id_race;
+                 
+                    </textarea>
+                      <button name="but_4">Отправить запрос</button>
+                </td>
+                <td style="width: 234px;">
+                  {% for row in rows_4  %}
+                  <label>{{row}}</label>
+                  {% endfor %}
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td>
+                    <label> Найти сотрудников, которые относятся к экипажу определенного рейса
+
+
+                    </label>
+                  <textarea style="width: 624px; height: 124px;" type="text" name="post_5" value="">
+                    SELECT 
+    emp.id_employee,
+    emp."full name",
+    emp.post,
+    emp.contact_information
+FROM 
+    public."Employee" emp
+JOIN 
+    public."Flight_history" fh ON emp.id_employee = fh.id_employee
+JOIN 
+    public."Race" r ON fh.id_race = r.id_race
+WHERE 
+    r.id_race = 2;
+
+                 
+                    </textarea>
+                      <button name="but_5">Отправить запрос</button>
+                </td>
+                <td style="width: 234px;">
+                  {% for row in rows_5 %}
+                  <label>{{row}}</label>
+                  {% endfor %}
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td>
+                    <label> ----
+
+
+                    </label>
+                  <textarea style="width: 624px; height: 124px;" type="text" name="post_6" value="">
+                    SELECT 
+                    emp.id_employee,
+                    emp."full name",
+                    emp.post,
+                    emp.contact_information
+                FROM 
+                    public."Employee" emp
+                WHERE 
+                    emp.id_employee IN (
+                        SELECT fh.id_employee
+                        FROM public."Flight_history" fh
+                        WHERE fh.id_race = 1
+                    );
+                
+                 
+                    </textarea>
+                      <button name="but_6">Отправить запрос</button>
+                </td>
+                <td style="width: 234px;">
+                  {% for row in rows_6 %}
+                  <label>{{row}}</label>
+                  {% endfor %}
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td>
+                    <label> Этот запрос вернет список сотрудников, которые работают в экипажах, но не имеют записей о выполнении рейсов.
+                    </label>
+                  <textarea style="width: 624px; height: 124px;" type="text" name="post_7" value="">
+                    SELECT 
+    emp.id_employee,
+    emp."full name",
+    emp.post,
+    emp.contact_information
+FROM 
+    public."Employee" emp
+WHERE 
+    EXISTS (
+        SELECT 1
+        FROM public."Equipage" e
+        WHERE e.id_equipage = emp.id_equipage
+    ) AND NOT EXISTS (
+        SELECT 1
+        FROM public."Flight_history" fh
+        WHERE fh.id_employee = emp.id_employee
+    );
+
+                    </textarea>
+                      <button name="but_7">Отправить запрос</button>
+                </td>
+                <td style="width: 234px;">
+                  {% for row in rows_7 %}
+                  <label>{{row}}</label>
+                  {% endfor %}
+                </td>
+                
+            </tr>
+              </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>
