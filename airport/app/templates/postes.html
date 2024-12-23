@@ -44,7 +44,7 @@
                 {% csrf_token %}
               <tr>
                   <td>
-                    <label></label>
+                    <label>Запрос возвращает список типов самолетов, общее количество рейсов для каждого типа и дату/время последнего вылета для каждого</label>
                     <textarea style="width: 624px; height: 124px;" type="text" name="post_1" value="">SELECT p.type_plane, COUNT(r.id_race) AS total_flights, MAX(r.date_and_time_of_departure) AS latest_departure FROM public."Plane" p LEFT JOIN 
                         public."Race" r ON p.id_plane = r.id_plane
                     GROUP BY 
@@ -236,8 +236,8 @@ WHERE
 
             <tr>
                 <td>
-                    <label> ----
-
+                    <label> 
+                        Запрос вернет список сотрудников, которые работают в экипаже рейса с идентификатором 1
 
                     </label>
                   <textarea style="width: 624px; height: 124px;" type="text" name="post_6" value="">
